@@ -1,0 +1,33 @@
+server:
+  port: ${SERVER_PORT}
+  error:
+    whitelabel:
+      enabled: true
+    include-stacktrace: always
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: admin
+      maximum-pool-size: 10
+      connection-init-sql: SET TIME ZONE 'UTC'
+  jpa:
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+web-client:
+  auth:
+    url: ${AUTH_URL}
+partner:
+  max-level-allowed: 4
